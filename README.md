@@ -2,7 +2,7 @@
 
 Este é um bot de automação para enviar currículos no site da Catho (https://www.catho.com.br) usando reconhecimento de imagem via PyAutoGUI.
 
-<img src="images/logo.png" width="300">
+<img src="exemplo.png" width="300">
 
 ## ⚠️ Aviso Importante
 
