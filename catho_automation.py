@@ -16,6 +16,7 @@ IMAGES = {
     'pular': 'pular.png',
     'agora_nao': 'agora_nao.png',
     'resposta_obrigatorio': 'resposta_obrigatorio.png',
+    'bairesdev': 'BAIRESDEV.png',
     # Para o botão adjacente após 'pular', usaremos um deslocamento ou outra imagem
     # Se você tiver uma imagem específica para o botão adjacente, adicione-a aqui:
     # 'adjacente': 'adjacente.png'
@@ -108,6 +109,17 @@ def main():
         # PRIMEIRA VERIFICAÇÃO: Verificar e fechar qualquer mensagem de confirmação bloqueante
         # antes de começar o fluxo normal
         find_and_click('agora_nao', timeout=1, description='fechar mensagem de confirmação')
+
+        # VERIFICAR BAIRESDEV: Se a imagem BAIRESDEV for encontrada, pular a vaga
+        if find_and_click('bairesdev', timeout=1, description='BAIRESDEV detectado'):
+            print("BAIRESDEV detectado. Pulando a vaga...")
+            if find_and_click('pular', timeout=10, description='"pular" após BAIRESDEV'):
+                print("Vaga pulada devido a BAIRESDEV.")
+                continue  # Reiniciar o processo para a próxima candidatura
+            else:
+                print("Falha ao clicar em pular após detectar BAIRESDEV.")
+                # Ainda continuar para a próxima candidatura
+                continue
 
         # Etapa 1: Clicar no botão 'me candidatar'
         if not find_and_click('candidatar', description='"me candidatar" rosa'):
